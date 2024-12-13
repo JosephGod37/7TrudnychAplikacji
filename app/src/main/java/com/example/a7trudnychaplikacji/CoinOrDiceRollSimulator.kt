@@ -29,7 +29,18 @@ class Coin: RollingTool{
         println(wynik)
     }
 }
+class Dice:RollingTool{
+    override fun roll() {
+        val random= Random.nextInt(7)+1
+        println("Wylosowalo: ${random}")
+    }
+}
+
+
 fun main(){
     val Coin=Coin()
     Coin.roll()
+
+    val Dice=Dice()
+    Dice.roll()
 }
