@@ -19,4 +19,16 @@ object Quote{
         val random= listaCytatow.random()
         println("Losowy cytat dzis to: ${random}")
     }
+    fun addQuote(){
+        println("Napisz cytat ktory chcesz dodac:")
+        var uzytkownik= readLine()
+        if (uzytkownik != null) {
+            listaCytatow.add(uzytkownik)
+        }
+        println(listaCytatow)
+    }
+}
+fun main(){
+    Quote.getRandomQuote()
+    Quote.addQuote()
 }
