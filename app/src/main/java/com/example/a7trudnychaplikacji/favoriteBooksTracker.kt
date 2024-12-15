@@ -1,32 +1,49 @@
 package com.example.a7trudnychaplikacji
 
-class Books(val autor:String,val rokWydania:Int,val tytul:String)
+class  Books(val autor:String,val rokWydania:Int,val tytul:String)
 {
+    constructor(): this("",0,"")
+
     var listOfBook= mutableListOf<Books>()
-    fun addBook(autor: String,rokWydania: Int,tytul: String){
-        val newBook=Books(autor,rokWydania,tytul)
-        listOfBook.add(newBook)
+
+    fun addBook(book: Books){
+        listOfBook.add(book)
 
     }
-
-    fun wybor() {
-        println("Wybierz w jaki sposob chcesz filtrowac wedlug autora lub roku wydania mozliwe jest takze sortowanie po tytule i wyswitlenie")
-        println("1-autor 2-rok wydania 3-tytul 4-wyswietl")
-        val uzytkownik2 = readLine()
-        if (uzytkownik2 == "1") {
-            sortujPoAutorz()
-        } else if (uzytkownik2 == "2") {
-
-        } else if (uzytkownik2 == "3") {
-
-        } else if(uzytkownik2=="4") {
-
-        }
-        else{
-            println("Blad")
-        }
+    fun filtrujPoAutorze(autor: String){
+        val posortowane=listOfBook.filter {it.autor == autor}
+        posortowane.forEach { println("Autor: ${it.autor} Tytuł: ${it.tytul}, Rok wydania: ${it.rokWydania}") }
     }
-    fun sortujPoAutorz(){
-
+    fun filtrujPoRokuWydania(rokWydania: Int){
+        val posortowane=listOfBook.filter {it.rokWydania == rokWydania}
+        posortowane.forEach { println("Autor: ${it.autor} Tytuł: ${it.tytul}, Rok wydania: ${it.rokWydania}") }
     }
+    fun sortowaniePoTytule(){
+        val posortowane=listOfBook.sortedBy{ it.tytul }
+        posortowane.forEach { println("Autor: ${it.autor} Tytuł: ${it.tytul}, Rok wydania: ${it.rokWydania}") }
+    }
+    fun wyswietlanie(){
+        listOfBook.forEach { println("Autor: ${it.autor} Tytuł: ${it.tytul}, Rok wydania: ${it.rokWydania}") }
+    }
+}
+
+
+fun main() {
+    val book1 = Books("George Orwell", 1945, "Folwark zwierzęcy")
+    val book2 = Books("Fiodor Dostojewski", 1866, "Zbrodnia i kara")
+    val book3 = Books("Fiodor Dostojewski", 1879, "Bracia Karamazow")
+    val book4 = Books("Jane Austen", 1813, "Duma i uprzedzenie")
+    val book5 = Books("Jane Austen", 1815, "Emma")
+
+    val osoba1 = Books()
+    osoba1.addBook(book1)
+    osoba1.addBook(book2)
+    osoba1.addBook(book3)
+    osoba1.addBook(book4)
+    osoba1.addBook(book5)
+
+//    osoba1.filtrujPoAutorze("Fiodor Dostojewski")
+//    osoba1.filtrujPoRokuWydania(1945)
+//    osoba1.sortowaniePoTytule()
+    osoba1.wyswietlanie()
 }
