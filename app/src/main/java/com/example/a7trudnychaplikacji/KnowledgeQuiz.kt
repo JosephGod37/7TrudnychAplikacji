@@ -88,6 +88,34 @@ class wielokrotnegoWyboru(): pytanie {
     }
 }
 
+data class PytaniePrawdaFalsz(
+    val pytanie: String,
+    val poprawnaOdpowiedz:Boolean
+)
+val pytaniaPF = listOf(
+    PytaniePrawdaFalsz(
+        "Słońce jest gwiazdą.",
+        true
+    ),
+    PytaniePrawdaFalsz(
+        "Woda wrze w temperaturze 50°C na poziomie morza.",
+        false
+    ),
+    PytaniePrawdaFalsz(
+        "Australia jest większa od Europy.",
+        false
+    ),
+    PytaniePrawdaFalsz(
+        "Najmniejszą kością w ludzkim ciele jest strzemiączko.",
+        true
+    ),
+    PytaniePrawdaFalsz(
+        "Albert Einstein otrzymał Nagrodę Nobla za teorię względności.",
+        false // Za wyjaśnienie efektu fotoelektrycznego
+    )
+)
+
+
 fun main(){
     val osoba1= wielokrotnegoWyboru()
     osoba1.zadawaniePytania()
