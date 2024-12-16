@@ -56,3 +56,39 @@ val pytaniaWkw= listOf(
          "a"
     )
 )
+class wielokrotnegoWyboru(): pytanie {
+    override fun zadawaniePytania() {
+        pytaniaWkw.forEachIndexed{index, pytanie ->
+            println("Pytanie ${index+1}:${pytanie.pytanie}")
+            println("a) ${pytanie.a}")
+            println("b) ${pytanie.b}")
+            println("c) ${pytanie.c}")
+            println("d) ${pytanie.d}")
+        }
+        sprawdzanieOdp()
+    }
+
+
+    override fun sprawdzanieOdp() {
+        var poprawnaOdpowiedz = 0
+        pytaniaWkw.forEachIndexed{index, pytanie ->
+            pytanie.pytanie
+
+            println("Podaj poprawne odpowiedzi do tego pytania ${index+1}:")
+            var odpowiedz = readLine()
+            if (odpowiedz == pytanie.poprawnaOdpowiedz) {
+                println("Poprawna odpowiedz")
+                poprawnaOdpowiedz++
+            } else {
+                println("zla odpowiedz\nPoprawna odpowiedz to: ${pytanie.poprawnaOdpowiedz}")
+            }
+
+        }
+        println("Ilosc punktow to: ${poprawnaOdpowiedz}")
+    }
+}
+
+fun main(){
+    val osoba1= wielokrotnegoWyboru()
+    osoba1.zadawaniePytania()
+}
