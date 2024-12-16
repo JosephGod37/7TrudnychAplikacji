@@ -72,8 +72,6 @@ class wielokrotnegoWyboru(): pytanie {
     override fun sprawdzanieOdp() {
         var poprawnaOdpowiedz = 0
         pytaniaWkw.forEachIndexed{index, pytanie ->
-            pytanie.pytanie
-
             println("Podaj poprawne odpowiedzi do tego pytania ${index+1}:")
             var odpowiedz = readLine()
             if (odpowiedz == pytanie.poprawnaOdpowiedz) {
@@ -90,33 +88,73 @@ class wielokrotnegoWyboru(): pytanie {
 
 data class PytaniePrawdaFalsz(
     val pytanie: String,
-    val poprawnaOdpowiedz:Boolean
+    val Prawda:String,
+    val Falsz:String,
+    val poprawnaOdpowiedzPF:String
 )
 val pytaniaPF = listOf(
     PytaniePrawdaFalsz(
         "Słońce jest gwiazdą.",
-        true
+        "Prawda",
+        "Falsz",
+        "prawda"
     ),
     PytaniePrawdaFalsz(
         "Woda wrze w temperaturze 50°C na poziomie morza.",
-        false
+        "Prawda",
+        "Falsz",
+        "falsz"
     ),
     PytaniePrawdaFalsz(
         "Australia jest większa od Europy.",
-        false
+        "Prawda",
+        "Falsz",
+        "falsz"
     ),
     PytaniePrawdaFalsz(
         "Najmniejszą kością w ludzkim ciele jest strzemiączko.",
-        true
+        "Prawda",
+        "Falsz",
+        "prawda"
     ),
     PytaniePrawdaFalsz(
         "Albert Einstein otrzymał Nagrodę Nobla za teorię względności.",
-        false // Za wyjaśnienie efektu fotoelektrycznego
+        "Prawda",
+        "Falsz",
+        "falsz"
     )
 )
+class PrawdaFalsz(): pytanie {
+    override fun zadawaniePytania() {
+        pytaniaPF.forEachIndexed{index, pytanie ->
+            println("Pytanie ${index+1}:${pytanie.pytanie}")
+            println("Prawda")
+            println("Falsz ")
+        }
+        sprawdzanieOdp()
+    }
 
+
+    override fun sprawdzanieOdp() {
+        var poprawnaOdpowiedz = 0
+        pytaniaPF.forEachIndexed{index, pytanie ->
+            println("Podaj poprawne odpowiedzi do tego pytania ${index+1}:")
+            var odpowiedz = readLine()
+            if (odpowiedz==pytanie.poprawnaOdpowiedzPF) {
+                println("Poprawna odpowiedz")
+                poprawnaOdpowiedz++
+            } else {
+                println("zla odpowiedz\nPoprawna odpowiedz to: ${pytanie.poprawnaOdpowiedzPF}")
+            }
+
+        }
+        println("Ilosc punktow to: ${poprawnaOdpowiedz}")
+    }
+}
 
 fun main(){
     val osoba1= wielokrotnegoWyboru()
-    osoba1.zadawaniePytania()
+    //osoba1.zadawaniePytania()
+    val osoba2=PrawdaFalsz()
+    osoba2.zadawaniePytania()
 }
