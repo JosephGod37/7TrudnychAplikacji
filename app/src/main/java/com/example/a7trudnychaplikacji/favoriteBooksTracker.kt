@@ -44,6 +44,6 @@ fun main() {
 
 //    osoba1.filtrujPoAutorze("Fiodor Dostojewski")
 //    osoba1.filtrujPoRokuWydania(1945)
-//    osoba1.sortowaniePoTytule()
+//   osoba1.sortowaniePoTytule()
     osoba1.wyswietlanie()
 }
